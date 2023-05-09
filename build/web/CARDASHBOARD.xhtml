@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>car dashboard</title>
+        <link href="bootstrap/bootstrap.min_1.css" rel="stylesheet"/>
+        <style>
+
+        </style>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container">
+                <a href="#intro" class="navbar-brand">
+                    <span class="fw-bold text-secondary">
+                        <i class="bi bi-book-half"></i>
+                        DRIVE YOUR FAVORITE CAR.
+                    </span>
+                </a>
+                <div class="navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a  href="logout.xhtml" class="btn btn-secondary">LOG OUT OF THIS ACCOUNT</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid ">
+            <div class="row g-0">
+                <div class="col-2  text-muted shadow-lg" style="background-color:#FFC0CB;">
+                    <ul class="list-group mt-5 shadow-lg">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            AVALAIBLE CARS
+                            <span class="badge badge-primary badge-pill">#{carSeller.cars.size()}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SOLD CARS TODAY
+                            <span class="badge badge-primary badge-pill">50</span>
+                        </li>
+                    </ul>    
+                    <div   class="list-group mt-5 shadow-lg ">
+                        <a href="#" class="list-group-item list-group-item-action">ACCOUNT INFORMATION</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">USERNAME : #{trans.username}</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">#{trans.username}</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">Status</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Active</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Account</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">customer</a>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-10">
+                    <section id="intro m-5" >
+                        <div class="container-lg">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-5 text-center text-md-start">
+                                    <h1>
+                                        <div class="display-2">ONLINE CAR</div>
+                                        <div class="display-5 text-muted">BUY YOUR FAVORITE CAR</div>
+                                    </h1>
+                                    <p class="lead my-4 text-muted">
+                                        search for a car.
+                                    </p>
+                                    <h:form> 
+                                        <div class="input group mb-3">
+                                            <h:inputText class="form-control" value="#{trans.searchKey}">
+                                                <f:ajax event="keyup" listener="#{trans.searching()}" render="tb problem" />
+                                            </h:inputText>
+          
+                                        </div>
+                                    </h:form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <h:form>
+                        <h:messages id="transactiondetails" class="alert alert-primary"/>
+                        <h:dataTable id="tb" value="#{trans.carlist}" var="s" class="table ">
+                            <h:column>
+                                <f:facet  name="header">CAR MODEL</f:facet>
+                                <h:outputText value="#{s.carModel}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">NAME</f:facet>
+                                <h:outputText value="#{s.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NUMBER OF SEATS</f:facet>
+                                <h:outputText value="#{s.seats}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">MANUFACTURED DATE</f:facet>
+                                <h:outputText value="#{s.manuDate}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">PRICE</f:facet>
+                                <h:outputText value="#{s.price}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">PURCHASE</f:facet>
+                                <h:commandButton action="#{trans.transact(s)}" class="btn btn-primary" value="PURCHASE"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

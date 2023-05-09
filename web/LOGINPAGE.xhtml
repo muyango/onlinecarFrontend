@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>client login</title>
+        <link href="bootstrap/bootstrap.min_1.css" rel="stylesheet"/>
+    </h:head>
+     <h:body style="background-color:#FFC0CB;">
+        <div class="card m-5 shadow-lg rounded-lg">
+            <div class="card-header" style="background-color:#424242"><center><h1 class="lead" style="color:lightblue">BUYER LOGIN</h1></center></div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center text-md-start">
+                            <h1>
+                                <div class="display-2">ONLINE CAR</div>
+                                <div class="display-5 text-muted">BUY YOUR FAVORITE CAR</div>
+                            </h1>
+                            <p class="lead my-4 text-muted">
+                                hello world hello world hello world hello wolrd.
+                            </p>
+                            <a href="homepage.html" class="btn btn-outline-primary btn-lg">HOMEPAGE</a>
+                        </div>
+                        <div class="col">
+                            <div class="shadow-lg p-5 bg-light">
+                                <h:messages id="logindetails" class="alert alert-primary"/>
+                                <h:form>
+                                    <div class="form-group">
+                                        <h:outputLabel value="EMAIL" />
+                                        <h:inputText class="form-control" value="#{custLogin.customer.email}"/>
+                                    </div>
+                                    <div class="form-group ">
+                                        <h:outputLabel value="PASSWORD" />
+                                        <h:inputSecret class="form-control" value="#{custLogin.customer.password}"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <center><h:commandButton value="LOGIN" action="#{custLogin.cLoginHelper()}" class="btn btn-success"/></center>
+                                    </div>   
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer"><center><div class="text-muted">drive your favorite car</div></center></div>
+        </div>
+   
+    </h:body>
+</html>
+
